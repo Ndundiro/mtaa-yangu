@@ -5,7 +5,7 @@ from PIL import Image
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.CharField(max_length=250, default="I love awwwards,it is a source of inspiration", blank=True)
+    bio = models.CharField(max_length=250, default="My city my town", blank=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 
