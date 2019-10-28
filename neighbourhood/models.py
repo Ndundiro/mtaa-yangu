@@ -29,29 +29,29 @@ class Neighbourhood(models.Model):
 
 
 
-# class Business(models.Model):
-#     name = models.CharField(max_length=120)
-#     email = models.EmailField(max_length=254)
-#     description = models.TextField(blank=True)
-#     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='business')
-#     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
+class Business(models.Model):
+    name = models.CharField(max_length=120)
+    email = models.EmailField(max_length=254)
+    description = models.TextField(blank=True)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='business')
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
 
-#     def __str__(self):
-#         return f'{self.name} Business'
+    def __str__(self):
+        return f'{self.name} Business'
 
-#     def create_business(self):
-#         self.save()
+    def create_business(self):
+        self.save()
 
-#     def delete_business(self):
-#         self.delete()
+    def delete_business(self):
+        self.delete()
 
-#     @classmethod
-#     def find_business(cls, business_id):
-#         return cls.objects.filter(id=business_id)
+    @classmethod
+    def find_business(cls, business_id):
+        return cls.objects.filter(id=business_id)
 
 
-# class Post(models.Model):
-#     post = models.TextField()
-#     date = models.DateTimeField(auto_now_add=True)
-#     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='post_owner')
-#     mtaa = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='mtaa_post')
+class Post(models.Model):
+    post = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='post_owner')
+    mtaa = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='mtaa_post')
