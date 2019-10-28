@@ -11,17 +11,17 @@ def index(request):
     return render(request, 'neighbourhood/index.html')
 
 
-# def add_mtaa(request):
-#     if request.method == 'POST':
-#         form = NeighbourHoodForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             mtaa = form.save(commit=False)
-#             mtaa.admin = request.user.profile
-#             mtaa.save()
-#             return redirect('index')
-#     else:
-#         form = NeighbourHoodForm()
-#     return render(request, 'create_mtaa.html', {'form': form})
+def add_mtaa(request):
+    if request.method == 'POST':
+        form = NeighbourHoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            mtaa = form.save(commit=False)
+            mtaa.admin = request.user.profile
+            mtaa.save()
+            return redirect('index')
+    else:
+        form = NeighbourHoodForm()
+    return render(request, 'create_mtaa.html', {'form': form})
 
 
 # def mitaa(request):
