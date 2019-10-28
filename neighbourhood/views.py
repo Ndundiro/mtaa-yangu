@@ -33,19 +33,19 @@ def mitaa(request):
     return render(request, 'mitaa_zote.html', params)
 
 
-# def create_post(request, mtaa_id):
-#     mtaa = Neighbourhood.objects.get(id=mtaa_id)
-#     if request.method == 'POST':
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.mtaa = mtaa
-#             post.user = request.user.profile
-#             post.save()
-#             return redirect('index')
-#     else:
-#         form = PostForm()
-#     return render(request, 'create_post.html', {'form': form})
+def create_post(request, mtaa_id):
+    mtaa = Neighbourhood.objects.get(id=mtaa_id)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.mtaa = mtaa
+            post.user = request.user.profile
+            post.save()
+            return redirect('index')
+    else:
+        form = PostForm()
+    return render(request, 'create_post.html', {'form': form})
 
 
 
