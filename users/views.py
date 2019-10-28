@@ -39,17 +39,17 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
-# def display_profile(request):
+def display_profile(request):
 
-#     u_form = UserUpdateForm(instance=request.user)
-#     p_form = ProfileUpdateForm(instance=request.user.profile)
-#     # posts = Post.objects.filter(user=request.user)
+    u_form = UserUpdateForm(instance=request.user)
+    p_form = ProfileUpdateForm(instance=request.user.profile)
+    # posts = Post.objects.filter(user=request.user)
 
-#     context = {
-#         'u_form': u_form,
-#         'p_form': p_form,
-#         # 'posts':posts
-#     }
-#     return render(request, 'users/display_profile.html', context)
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+        # 'posts':posts
+    }
+    return render(request, 'users/display_profile.html', context)
 
 
