@@ -24,13 +24,13 @@ def add_mtaa(request):
     return render(request, 'create_mtaa.html', {'form': form})
 
 
-# def mitaa(request):
-#     mitaa_zote = Neighbourhood.objects.all()
-#     mitaa_zote = mitaa_zote[::-1]
-#     params = {
-#         'mitaa_zote': mitaa_zote,
-#     }
-#     return render(request, 'mitaa_zote.html', params)
+def mitaa(request):
+    mitaa_zote = Neighbourhood.objects.all()
+    mitaa_zote = mitaa_zote[::-1]
+    params = {
+        'mitaa_zote': mitaa_zote,
+    }
+    return render(request, 'mitaa_zote.html', params)
 
 
 # def create_post(request, mtaa_id):
