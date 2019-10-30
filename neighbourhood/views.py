@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import NeighbourHoodForm, PostForm
-from .models import Neighbourhood
+from .forms import NeighbourHoodForm, PostForm, BusinessForm
+from .models import Neighbourhood, Business, Post
 
-# Create your views here.
 
 @login_required(login_url='login')
 def index(request):
-    return render(request, 'neighbourhood/index.html')
+    mitaa_zote = Neighbourhood.objects.all()
+    return render(request, 'neighbourhood/index.html', {'mitaa_zote':mitaa_zote})
 
 
 def add_mtaa(request):
@@ -40,12 +40,38 @@ def create_post(request, mtaa_id):
         if form.is_valid():
             post = form.save(commit=False)
             post.mtaa = mtaa
-            post.user = request.user.profile
+            post.user = request.user
             post.save()
-            return redirect('index')
+            return redirect('mtaa', mtaa.id)
     else:
         form = PostForm()
     return render(request, 'create_post.html', {'form': form})
+
+
+
+def mtaa(request, mtaa_id):
+    mtaa = Neighbourhood.objects.get(id=mtaa_id)
+    business = Business.objects.filter(id=mtaa_id)
+    posts = Post.objects.filter(id=mtaa_id)
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            b_form = form.save(commit=False)
+            b_form.neighbourhood = mtaa
+            b_form.user = request.user
+            b_form.save()
+            return redirect('mtaa', mtaa.id)
+    else:
+        form = BusinessForm()
+
+    
+    params = {
+        'mtaa': mtaa,
+        'business': business,
+        'form': form,
+        'posts': posts
+    }
+    return render(request, 'mtaa.html', params)
 
 
 

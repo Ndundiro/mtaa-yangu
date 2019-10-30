@@ -19,4 +19,4 @@ class BusinessForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        exclude = ('user', 'hood')
+        exclude = ('user', 'mtaa')

@@ -1,7 +1,6 @@
 from . import views 
 from django.urls import path
 from django.conf.urls import url
-# from .views import  ProjectCreateView, ProjectListView, ReviewCreateView, ProjectDetailView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -9,12 +8,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-   path('', views.index, name='index'), 
+   path('mitaa/', views.index, name='index'), 
    path('ongeza_mtaa/', views.add_mtaa, name='add_mtaa'),
-   path('<mtaa_id>/post', views.create_post, name='add_post'),
-   path('mitaa/', views.mitaa, name='mitaa_zote')
-
-
+   path('post/<mtaa_id>', views.create_post, name='add_post'),
+   path('', views.mitaa, name='mitaa_zote'),
+   path('mtaa/<mtaa_id>', views.mtaa, name='mtaa'),
    
 ]
 

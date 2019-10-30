@@ -1,12 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from neighbourhood.models import Neighbourhood
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=250, default="My city my town", blank=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    location = models.CharField(max_length=50, blank=True, null=True)
+    neighborhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE, blank=True, null=True)
 
 
     def save_profile(self):

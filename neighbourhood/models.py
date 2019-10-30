@@ -1,14 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
-from users.models import Profile
 
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     occupants_count = models.IntegerField()
-    pub_date = models.DateTimeField(auto_now_add=True)
     Admin = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    health = models.IntegerField(null=True, blank=True)
+    police = models.IntegerField(null=True, blank=True)
     description = models.TextField()
 
 
@@ -34,7 +35,8 @@ class Business(models.Model):
     email = models.EmailField(max_length=254)
     description = models.TextField(blank=True)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='business')
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='owner')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner')
+    business_image = models.ImageField(upload_to='images/', default='default.jpg')
 
     def __str__(self):
         return f'{self.name} Business'
@@ -53,5 +55,5 @@ class Business(models.Model):
 class Post(models.Model):
     post = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='post_owner')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
     mtaa = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='mtaa_post')
