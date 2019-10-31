@@ -7,7 +7,7 @@ Ndundiro Kamau
 Mtaa_yangu is a web application that allows users to be in the loop about everything happening in their neighborhood. From contact information of different businesses to meeting announcements or even alerts.
 
 ## Live Link 
-[click here](https://mtaa_yangu.herokuapp.com/) view the live site.
+[click here](https://mtaa159.herokuapp.com/) view the live site.
 
 ## SetUp/Installations
 1. Download the zip file of the project or Clone the repository using the following command:
@@ -81,6 +81,6 @@ There are no known bugs yet
 For any comments,suggestions,feedback or inquiries, contact me via email: ndundirokamau@gmail.com
 
 ## License
-[MIT License](https://github.com/Ndundiro/Project-Rank/blob/master/LICENSE)
+[MIT License](https://github.com/Ndundiro/mtaa-yangu/blob/master/LICENSE)
 
 Copyright © 2019 Ndundiro Kamau
