@@ -5,7 +5,7 @@ from .forms import NeighbourHoodForm, PostForm, BusinessForm
 from .models import Neighbourhood, Business, Post
 
 
-@login_required(login_url='login')
+
 def index(request):
     mitaa_zote = Neighbourhood.objects.all()
     return render(request, 'neighbourhood/index.html', {'mitaa_zote':mitaa_zote})
@@ -23,7 +23,7 @@ def add_mtaa(request):
         form = NeighbourHoodForm()
     return render(request, 'create_mtaa.html', {'form': form})
 
-
+@login_required(login_url='login')
 def mitaa(request):
     mitaa_zote = Neighbourhood.objects.all()
     mitaa_zote = mitaa_zote[::-1]

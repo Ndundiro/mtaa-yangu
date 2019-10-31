@@ -13,11 +13,9 @@
         <div class="col-md-4">
             <h2>Select Your Neighbourhood</h2>
 
-                <select name="neighborhood" class="form-control  form-control-lg">
-                        {% for neighborhood in mitaa_zote %}
-                        <option value="{{neighborhood.name}}">{{neighborhood.name}}</option>
+                      {% for neighborhood in mitaa_zote %}
+                        <a href="{% url 'mtaa' neighborhood.id %}" class='btn btn-primary btn-sm'>{{neighborhood.name}}</a> <br>
                         {% endfor %}
-                      </select> 
         </div>
 <div class="col-md-8">
         <h2>Our neighbourhoods at a glance.Join and enjoy the fun</h2>
