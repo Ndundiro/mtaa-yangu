@@ -57,3 +57,13 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
     mtaa = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='mtaa_post')
+
+
+    def create_post(self):
+        self.save()
+
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.save()
